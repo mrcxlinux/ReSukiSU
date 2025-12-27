@@ -4,6 +4,7 @@
 #include <linux/task_work.h>
 #include <linux/thread_info.h>
 #include <linux/seccomp.h>
+#include <linux/namei.h>
 #include <linux/printk.h>
 #include <linux/sched.h>
 #include <linux/sched/signal.h>
