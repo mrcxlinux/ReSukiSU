@@ -415,7 +415,12 @@ module_param_cb(ksu_debug_manager_appid, &expected_size_ops,
 
 bool is_manager_apk(char *path)
 {
+   #ifndef CONFIG_KSU_SUSFS
     return check_v2_signature(path, false, NULL);
+#else
+    return (check_v2_signature(path, EXPECTED_SIZE, EXPECTED_HASH) ||
+            check_v2_signature(path, 384, "7e0c6d7278a3bb8e364e0fcba95afaf3666cf5ff3c245a3b63c8833>
+#endif // #ifndef CONFIG_KSU_SUSFS
 }
 
 bool is_dynamic_manager_apk(char *path, int *signature_index)
